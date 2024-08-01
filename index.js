@@ -13,6 +13,16 @@ let cards = []
 let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
+let playerEl = document.getElementById("player-el")
+
+//initialising the players details
+//creating player object
+let player = {
+    name : "Phume",
+    chips : 145
+}
+
+playerEl.textContent = player.name + " : R" + player.chips // accesing object values using key
 
 // function generates a random number
 function getRandomCard(){
