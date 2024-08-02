@@ -69,14 +69,16 @@ sumEl.textContent = "Sum: " + sum
     else if (sum ===21){
         message ="Wooop woop you win"
         hasBlackjack = true
-        resetGame()  //game resets when you win
+        player.chips += 15  // add chips when you win with Blackjack
+        playerEl.textContent = player.name + " : R" + player.chips  // updates the player details
+        setTimeout(resetGame, 2000) //game resets when you win after a 2 second delay
     }
     else {
         message= "You're out"
         isAlive = false
         player.chips -= 10  // deducts chips when you lose
-        playerEl.textContent = player.name + " : R" + player.chips
-        resetGame()
+        playerEl.textContent = player.name + " : R" + player.chips  // updates player details
+        setTimeout(resetGame, 2000) //game resets when you lose after a 2 second delay
     }
 
     messageEl.textContent = message
@@ -89,8 +91,6 @@ function newCard(){
     sum += card
     cards.push(card)
     renderGame()
-    } else {
-        resetGame()
     }
 }
 
@@ -103,4 +103,9 @@ function resetGame() {
     messageEl.textContent = " Want to play another round?"
     cardsEl.textContent = "Cards :"
     sumEl.textContent = "Sum :"
+
+    //automaticall start game when chips are = 5 because you cant play anymore
+    if (player.chips === 0) {
+        setTimeout(startGame, 2000)  // starts a new game automatically after a 2-second delay when chips are 5 or less
+    }
 }
