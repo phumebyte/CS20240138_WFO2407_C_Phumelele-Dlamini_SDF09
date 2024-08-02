@@ -22,7 +22,8 @@ let player = {
     chips : 145
 }
 
-//playerEl.textContent = player.name + " : R" + player.chips // accesing object values using keys
+//outputting the player details 
+playerEl.textContent = player.name + " : R" + player.chips // accesing object values using keys
 
 // function generates a random number
 function getRandomCard(){
@@ -38,10 +39,6 @@ function getRandomCard(){
 
 // this function is called by the start game click on the html
 function startGame(){
-
-    // include user input for name or if not, the default is me
-    player.name = playerNameInput.value || "Phumelele"
-    playerEl.textContent = player.name + " : R" + player.chips
 
     isAlive = true
     let firstCard = getRandomCard()
@@ -72,12 +69,12 @@ sumEl.textContent = "Sum: " + sum
     else if (sum ===21){
         message ="Wooop woop you win"
         hasBlackjack = true
-        resetGame()
+        resetGame()  //game resets when you win
     }
     else {
         message= "You're out"
         isAlive = false
-        player.chips -= 10
+        player.chips -= 10  // deducts chips when you lose
         playerEl.textContent = player.name + " : R" + player.chips
         resetGame()
     }
